@@ -18,6 +18,7 @@ env:
   TZ: Asia/Shanghai
   DEVICE: MT7628
   UPLOAD_OUTPUT: true
+  UPLOAD_RELEASE: false
 
 jobs:
    MT7628_build:
@@ -104,6 +105,7 @@ jobs:
     
     - name: 发布固件至 Release
       uses: ncipollo/release-action@v1
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
         tag: "${{ env.DEVICE }}--${{ env.FILE_DATE }}"
         artifacts: "openwrt/bin/targets/*/*/*"
