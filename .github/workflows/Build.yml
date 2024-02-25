@@ -13,7 +13,8 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-23.05
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
+ # CONFIG_FILE: .config
+  CONFIG_FILE: MT7628.config
   TZ: Asia/Shanghai
   DEVICE: MT7628
   UPLOAD_OUTPUT: true
@@ -81,6 +82,13 @@ jobs:
         cd openwrt
         make -j$(nproc)
         echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+
+    - name: SSH 连接 Actions
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name : 上传输出文件
       uses: actions/upload-artifact@master
