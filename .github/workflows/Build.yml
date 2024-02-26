@@ -57,8 +57,8 @@ jobs:
       run: |
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
         cd openwrt
-        echo "src-git https://github.com/immortalwrt/packages" >> ./feeds.conf.default
-        echo "src-git https://github.com/immortalwrt/luci" >> ./feeds.conf.default
+        echo "src-git kenzo https://github.com/immortalwrt/packages" >> ./feeds.conf.default
+        echo "src-git luci https://github.com/immortalwrt/luci" >> ./feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
