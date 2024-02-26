@@ -11,14 +11,14 @@ on:
         
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: v23.05.1
+  REPO_BRANCH: v21.02.7
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   # CONFIG_FILE: MT7628.config
   TZ: Asia/Shanghai
   DEVICE: MT7628
   UPLOAD_OUTPUT: true
-  UPLOAD_RELEASE: false
+  UPLOAD_RELEASE: true
 
 jobs:
    MT7628_build:
