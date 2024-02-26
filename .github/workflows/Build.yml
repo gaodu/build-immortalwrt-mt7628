@@ -11,7 +11,7 @@ on:
         
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: v21.02.7
+  REPO_BRANCH: v23.05.1
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   # CONFIG_FILE: MT7628.config
@@ -57,6 +57,7 @@ jobs:
       run: |
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
         cd openwrt
+        
         echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> ./feeds.conf.default
         echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
         ./scripts/feeds update -a
