@@ -59,9 +59,8 @@ jobs:
         chmod +x $DIY_P1_SH
       
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
-        cd openwrt
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
+        cd openwrt && ./scripts/feeds update -a
+        cd openwrt && ./scripts/feeds install -a
 
     - name: 修改 Lan IP
       run: |
