@@ -11,14 +11,14 @@ on:
         
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-#  REPO_BRANCH: openwrt-21.02
-  REPO_BRANCH: openwrt-23.05
+  REPO_BRANCH: v23.05.1
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
- # CONFIG_FILE: MT7628.config
+  # CONFIG_FILE: MT7628.config
   TZ: Asia/Shanghai
   DEVICE: MT7628
   UPLOAD_OUTPUT: true
+  UPLOAD_RELEASE: true
 
 jobs:
    MT7628_build:
@@ -57,8 +57,8 @@ jobs:
       run: |
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
         cd openwrt
-        echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> ./feeds.conf.default
-        echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
+        echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >>feeds.conf.default
+        echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
@@ -78,7 +78,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: 编译固件
+    - name: 编译固件1
       run: |
         cd openwrt
         make -j$(nproc)
@@ -91,12 +91,13 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-    - name: 编译固件
+    - name: 编译固件2
       run: |
         cd openwrt
         make -j$(nproc)
         echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-  
+        
+
     - name : 上传输出文件
       uses: actions/upload-artifact@master
       if: env.UPLOAD_OUTPUT == 'true' && !cancelled()
@@ -111,6 +112,7 @@ jobs:
     
     - name: 发布固件至 Release
       uses: ncipollo/release-action@v1
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
         tag: "${{ env.DEVICE }}--${{ env.FILE_DATE }}"
         artifacts: "openwrt/bin/targets/*/*/*"
