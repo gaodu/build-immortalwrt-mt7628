@@ -58,10 +58,10 @@ jobs:
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
         cd openwrt
         
-        echo "src-git packages https://github.com/immortalwrt/packages.git" >> ./feeds.conf.default
-        echo "src-git luci https://github.com/immortalwrt/luci.git" >> ./feeds.conf.default
-        echo "src-git routing https://github.com/openwrt/routing.git" >> ./feeds.conf.default
-        echo "src-git telephony https://github.com/openwrt/telephony.git" >> ./feeds.conf.default
+        echo "src-git packages https://github.com/immortalwrt/packages.git -b openwrt-23.05" >> ./feeds.conf.default
+        echo "src-git luci https://github.com/immortalwrt/luci.git -b openwrt-23.05" >> ./feeds.conf.default
+        echo "src-git routing https://github.com/openwrt/routing.git -b openwrt-23.05" >> ./feeds.conf.default
+        echo "src-git telephony https://github.com/openwrt/telephony.git -b openwrt-23.05" >> ./feeds.conf.default
 
         
         ./scripts/feeds update -a
