@@ -1,4 +1,4 @@
-name: Build-openwrt1806
+name: Build-openwrt23051
 
 on:
   repository_dispatch:
