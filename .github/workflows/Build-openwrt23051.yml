@@ -10,9 +10,9 @@ on:
         default: 'false'
         
 env:
-  REPO_URL: https://github.com/gaodu/immortalwrt
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
 #  REPO_BRANCH: openwrt-18.06
-  REPO_BRANCH: v23051
+  REPO_BRANCH: v23.05.1
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
  # CONFIG_FILE: MT7628.config
