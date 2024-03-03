@@ -14,4 +14,4 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-#echo 'src-git LHCpackages https://github.com/immortalwrt/packages' >>feeds.conf.default
+echo 'src-git LHCpackages https://github.com/immortalwrt/packages' >>feeds.conf.default
