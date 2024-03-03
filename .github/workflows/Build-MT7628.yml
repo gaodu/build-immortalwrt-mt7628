@@ -54,7 +54,6 @@ jobs:
       run: |
         cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/
         cd openwrt
-  #      echo "src-git openwrtpack https://github.com/openwrt/packages" >> ./feeds.conf.default
         echo "src-git immpack https://github.com/immortalwrt/packages" >> ./feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
