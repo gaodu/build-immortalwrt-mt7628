@@ -1,0 +1,6 @@
+src/gz immortalwrt_packages https://mirrors.vsean.net/openwrt/releases/packages-23.05/mipsel_24kc/packages/
+src/gz immortalwrt_luci https://mirrors.vsean.net/openwrt/releases/packages-23.05/mipsel_24kc/luci/
+src/gz immortalwrt_routing https://mirrors.vsean.net/openwrt/releases/packages-23.05/mipsel_24kc/routing/
+src/gz immortalwrt_telephony https://mirrors.vsean.net/openwrt/releases/packages-23.05/mipsel_24kc/telephony/
+src/gz immortalwrt_base https://mirrors.vsean.net/openwrt/releases/packages-23.05/mipsel_24kc/base/
+src/gz 76x8_base https://mirrors.vsean.net/openwrt/releases/23.05.1/targets/ramips/mt76x8/packages/
