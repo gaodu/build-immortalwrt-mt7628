@@ -11,11 +11,9 @@ on:
         
 env:
   REPO_URL: https://github.com/gaodu/immortalwrt
-#  REPO_BRANCH: openwrt-18.06
   REPO_BRANCH: v1806
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
- # CONFIG_FILE: MT7628.config
+  CONFIG_FILE: MT7628mini.config
   TZ: Asia/Shanghai
   DEVICE: MT7628
   UPLOAD_OUTPUT: true
