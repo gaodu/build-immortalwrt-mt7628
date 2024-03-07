@@ -11,7 +11,7 @@ on:
         
 env:
   REPO_URL: https://github.com/openwrt/openwrt
-  REPO_BRANCH: v23.05.1
+  REPO_BRANCH: v18.06.9
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: MT7628mini.config
   TZ: Asia/Shanghai
@@ -109,6 +109,6 @@ jobs:
         tag: "${{ env.DEVICE }}--${{ env.FILE_DATE }}"
         artifacts: "openwrt/bin/targets/*/*/*"
         body: |
-          # 未测试×
+          # OPENWRT18069未测试×
           
           IP: 192.168.2.1 | Password: none
